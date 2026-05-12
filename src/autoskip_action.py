@@ -43,13 +43,20 @@ prediction = model.predict(features)[0]
 print(f"🤖 AutoSkip Decision: {prediction.upper()}")
 
 # Step 5 — Decision
+# Step 5 — Decision
 if prediction == 'skip':
     print("⏭️ PIPELINE SKIPPED — Only docs changed!")
+    import sys
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from cost_tracker import save_cost
     save_cost("skip", changed_files)
     sys.exit(0)
 else:
     print("✅ PIPELINE RUNNING — Code changes detected!")
+    import sys
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from cost_tracker import save_cost
     save_cost("run", changed_files)
     sys.exit(0)
