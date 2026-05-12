@@ -45,8 +45,11 @@ print(f"🤖 AutoSkip Decision: {prediction.upper()}")
 # Step 5 — Decision
 if prediction == 'skip':
     print("⏭️ PIPELINE SKIPPED — Only docs changed!")
-    print("💰 Cost Saved: ~$0.05 per skip")
+    from cost_tracker import save_cost
+    save_cost("skip", changed_files)
     sys.exit(0)
 else:
     print("✅ PIPELINE RUNNING — Code changes detected!")
+    from cost_tracker import save_cost
+    save_cost("run", changed_files)
     sys.exit(0)
