@@ -7,7 +7,7 @@ from security import verify_model_integrity, validate_input, log_audit, check_ra
 # Run security checks
 if not check_rate_limit():
     sys.exit(1)
-    
+
 import subprocess
 import pickle
 import sys
@@ -90,3 +90,6 @@ else:
     print("✅ PIPELINE RUNNING — Code changes detected!")
 
 sys.exit(0)
+# Slack Notification
+from notifier import send_slack_notification
+send_slack_notification(prediction, changed_files, COST_PER_RUN if prediction == "skip" else 0)

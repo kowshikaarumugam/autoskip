@@ -40,3 +40,6 @@ jobs:
         run: |
           echo "Pipeline Running..."
           echo "Build Success!"
+          - name: Install dependencies
+      run: |
+        pip install pandas scikit-learn requests
