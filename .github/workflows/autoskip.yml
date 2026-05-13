@@ -33,3 +33,9 @@ jobs:
       run: |
         echo "✅ Pipeline Running..."
         echo "Build Success!"
+        - name: Upload cost log
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: cost-log
+        path: data/cost_log.json
