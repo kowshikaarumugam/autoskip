@@ -11,31 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        pip install pandas scikit-learn
+      - name: Install dependencies
+        run: |
+          pip install pandas scikit-learn
 
-    - name: Run AutoSkip Analysis
-      run: |
-        python src/autoskip_action.py
+      - name: Run AutoSkip Analysis
+        run: |
+          python src/autoskip_action.py
 
-    - name: Run Pipeline
-      run: |
-        echo "✅ Pipeline Running..."
-        echo "Build Success!"
-        - name: Upload cost log
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: cost-log
-        path: data/cost_log.json
+      - name: Upload cost log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cost-log
+          path: data/cost_log.json
+
+      - name: Run Pipeline
+        run: |
+          echo "Pipeline Running..."
+          echo "Build Success!"
