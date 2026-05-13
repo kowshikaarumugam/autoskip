@@ -1,0 +1,14 @@
+{
+  "total_saved": 0.05,
+  "total_runs": 0,
+  "history": [
+    {
+      "timestamp": "2026-05-13 14:45:47",
+      "decision": "skip",
+      "files_changed": [
+        "README.md"
+      ],
+      "cost_saved": 0.05
+    }
+  ]
+}
