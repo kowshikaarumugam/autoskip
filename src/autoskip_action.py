@@ -1,3 +1,13 @@
+# Security checks
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from security import verify_model_integrity, validate_input, log_audit, check_rate_limit
+
+# Run security checks
+if not check_rate_limit():
+    sys.exit(1)
+    
 import subprocess
 import pickle
 import sys
